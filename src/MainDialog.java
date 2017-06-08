@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -39,5 +41,17 @@ public class MainDialog {
     public void showButton() {
         copyButton = new JButton("Copy");
         stopAllButton = new JButton("Stop all");
+
+        //Actionlisteners come here
+        copyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PopUp();
+            }
+        });
+
+        buttonPanel.add(copyButton);
+        buttonPanel.add(stopAllButton);
+        mainFrame.setVisible(true);
     }
 }
