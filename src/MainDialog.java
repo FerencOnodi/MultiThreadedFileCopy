@@ -10,18 +10,19 @@ import java.awt.event.WindowEvent;
  */
 public class MainDialog {
 
-    private JFrame mainFrame;
-    private JPanel buttonPanel;
-    private JButton copyButton;
-    private JButton stopAllButton;
+    static JFrame mainFrame;
+    static JPanel buttonPanel;
+    static JPanel progressPanel;
+    static JButton copyButton;
+    static JButton stopAllButton;
 
     public MainDialog() {
         prepareGUI();
     }
 
-    private void prepareGUI() {
+    private static void prepareGUI() {
         mainFrame = new JFrame("Multi Threaded Copy Application");
-        mainFrame.setSize(400, 500);
+        mainFrame.setSize(500, 600);
         mainFrame.setLayout(new GridLayout(2, 1));
         //Exit the application ->
         mainFrame.addWindowListener(new WindowAdapter() {
@@ -31,14 +32,16 @@ public class MainDialog {
             }
         });
 
-        //ButtonPanel -- one more panel needed before this, to display progress bars!!
+        progressPanel = new JPanel();
         buttonPanel = new JPanel();
 
+        mainFrame.add(progressPanel);
         mainFrame.add(buttonPanel);
         mainFrame.setVisible(true);
+        showButton();
     }
 
-    public void showButton() {
+    public static void showButton() {
         copyButton = new JButton("Copy");
         stopAllButton = new JButton("Stop all");
 
